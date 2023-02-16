@@ -10,7 +10,7 @@ services:
     restart: always
     ports:
       - '6379:6379'
-    command: redis-server --save 20 1 --loglevel warning --requirepass prod
+    command: redis-server --save 20 1 --loglevel warning --requirepass pass
     volumes: 
       - .:/home/cache
     networks:
@@ -21,7 +21,7 @@ services:
     environment:
       REDIS_HOST: tec-cache
       REDIS_PORT: 6379
-      REDIS_PASS: prod
+      REDIS_PASS: pass
 
       RAPIDAPI_KEY: 6827e6708bmsh897775ede21489ap1c9f34jsn9051b234402a
       RAPIDAPI_HOST: covid-19-statistics.p.rapidapi.com
