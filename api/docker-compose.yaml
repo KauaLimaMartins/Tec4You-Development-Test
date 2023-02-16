@@ -1,0 +1,37 @@
+version: "3.9"
+
+networks:
+  tec-net:
+    driver: bridge
+
+services:
+  tec-cache:
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass prod
+    volumes: 
+      - .:/home/cache
+    networks:
+      - tec-net
+
+  tec-backend:
+    build: ./
+    environment:
+      REDIS_HOST: tec-cache
+      REDIS_PORT: 6379
+      REDIS_PASS: prod
+
+      RAPIDAPI_KEY: 6827e6708bmsh897775ede21489ap1c9f34jsn9051b234402a
+      RAPIDAPI_HOST: covid-19-statistics.p.rapidapi.com
+    ports:
+      - '8000:8000'
+    depends_on:
+      - tec-cache
+    networks:
+      - tec-net
+
+volumes:
+  cache:
+    driver: local
