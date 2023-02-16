@@ -21,7 +21,7 @@ export function HomeHeader({ isAuthenticated }: HomeHeaderProps) {
     try {
       await Auth.signOut();
     } catch (err) {
-      console.log(err);
+      
     }
 
     setIsLoading(false);

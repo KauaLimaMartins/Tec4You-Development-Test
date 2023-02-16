@@ -42,14 +42,11 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
   const handleFilterReports = useCallback(async () => {
     setIsLoading(true);
 
-    console.log(country, date);
-
     try {
       const { data } = await api.get<{ reports: FilteredCovidReport }>(`/reports/filtered?region-iso=${country}&date=${formatDateToApi(date)}`);
     
       setFilteredCovidReports(data.reports);
     } catch (err) {
-      console.log(err);
       toast.error("Erro ao filtrar casos");
     }
 
@@ -199,8 +196,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       }
     }
   } catch (err) {
-    console.log(err);
-
     return {
       redirect: {
         destination: "/",

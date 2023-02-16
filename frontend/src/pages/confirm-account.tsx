@@ -15,7 +15,7 @@ export default function ConfirmAccountPage() {
 
   const [verificationCode, setVerificationCode] = useState("");
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleConfirmSignUp = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -24,7 +24,6 @@ try {
     },
   })
 } catch (err) {
-  console.log("Error to connect to amplify");
 }
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
