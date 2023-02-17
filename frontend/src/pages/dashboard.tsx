@@ -35,6 +35,7 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
     yesterday.setDate(yesterday.getDate() - 1)
 
     setMaxDate(yesterday);
+    setDate(yesterday)
   }, [])
 
   const handleFilterReports = useCallback(async () => {
