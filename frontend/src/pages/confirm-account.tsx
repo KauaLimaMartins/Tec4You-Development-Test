@@ -33,7 +33,9 @@ export default function ConfirmAccountPage() {
 
       await Auth.confirmSignUp(username, verificationCode);
       
-      router.push('/');
+      setTimeout(() => {
+        router.push('/');
+      }, 1000);
     } catch (err) {
       let errorMessage = "";
       
