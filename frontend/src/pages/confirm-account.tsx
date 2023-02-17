@@ -33,7 +33,7 @@ export default function ConfirmAccountPage() {
 
       await Auth.confirmSignUp(username, verificationCode);
       
-      router.push('/dashboard');
+      router.push('/');
     } catch (err) {
       let errorMessage = "";
       
