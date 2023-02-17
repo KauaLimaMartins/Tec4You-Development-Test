@@ -25,18 +25,16 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [maxDate, setMaxDate] = useState(new Date());;
+  const [maxDate, setMaxDate] = useState<Date>();;
 
   useEffect(() => {
-    let yesterday = new Date(maxDate);
+    api.get<{ regions: Country[] }>("/regions").then(({ data }) => setCountries(data.regions));
+  
+    let yesterday = new Date();
 
     yesterday.setDate(yesterday.getDate() - 1)
 
     setMaxDate(yesterday);
-  }, [])
-
-  useEffect(() => {
-    api.get<{ regions: Country[] }>("/regions").then(({ data }) => setCountries(data.regions));
   }, [])
 
   const handleFilterReports = useCallback(async () => {
@@ -84,7 +82,7 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
           <span className="text-xs text-gray-400">Ultima atualização: {formatDateToUI(todaysCovidReports.last_update.split(" ")[0])} {formatTime(todaysCovidReports.last_update.split(" ")[1])}</span>
         </div>
       
-        <div className="flex flex-wrap items-center gap-10 border-b-2 pb-12 justify-center md:justify-left">
+        <div className="flex flex-wrap items-center gap-10 border-b-2 pb-12 justify-center md:justify-left md:items-left">
           <div className="p-8 bg-indigo-600 rounded-lg text-center hover:bg-indigo-800 transition duration-300">
             <h3 className="uppercase text-white text-sm mb-1">Casos Confirmados</h3>
             <p className=" text-white text-3xl font-bold">{todaysCovidReports.confirmed.toLocaleString('pt-BR')}</p>
@@ -143,7 +141,7 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
 
         {
           filteredCovidReports.active && (
-            <div className="flex flex-wrap items-center gap-10 mt-10 justify-center md:justify-left">
+            <div className="flex flex-wrap items-center gap-10 mt-10 justify-center md:justify-left md:items-left">
               <div className="p-8 bg-indigo-600 rounded-lg text-center hover:bg-indigo-800 transition duration-300">
                 <h3 className="uppercase text-white text-sm mb-1">Casos Confirmados</h3>
                 <p className=" text-white text-3xl font-bold">{filteredCovidReports.confirmed.toLocaleString('pt-BR')}</p>
