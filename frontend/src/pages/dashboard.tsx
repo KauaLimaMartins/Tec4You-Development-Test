@@ -29,7 +29,7 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
   const [maxDate, setMaxDate] = useState<Date>();;
 
   useEffect(() => {
-    api.get<{ regions: Country[] }>("/covidando/regions").then(({ data }) => setCountries(data.regions));
+    api.get<{ regions: Country[] }>("/regions").then(({ data }) => setCountries(data.regions));
   
     let yesterday = new Date();
 
@@ -43,7 +43,7 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
     setIsLoading(true);
 
     try {
-      const { data } = await api.get<{ reports: FilteredCovidReport }>(`/covidando/reports/filtered?region-iso=${country}&date=${formatDateToApi(date)}`);
+      const { data } = await api.get<{ reports: FilteredCovidReport }>(`/reports/filtered?region-iso=${country}&date=${formatDateToApi(date)}`);
     
       setFilteredCovidReports(data.reports);
     } catch (err) {
@@ -183,7 +183,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   try {
-    const { data } = await api.get<{ reports: CovidReport }>(`/covidando/reports?date=${formatDateToApi(new Date())}`);
+    const { data } = await api.get<{ reports: CovidReport }>(`/reports?date=${formatDateToApi(new Date())}`);
   
     const { reports } = data;
 
