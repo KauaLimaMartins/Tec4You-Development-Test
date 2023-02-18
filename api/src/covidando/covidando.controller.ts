@@ -10,8 +10,7 @@ import { CovidandoService } from './covidando.service';
 import { RegionEntity } from './entities/region.entity';
 import { ReportEntity } from './entities/report.entity';
 
-@UseInterceptors(CacheInterceptor)
-@Controller('covidando')
+@Controller()
 export class CovidandoController {
   constructor(private readonly covidandoService: CovidandoService) {}
 
