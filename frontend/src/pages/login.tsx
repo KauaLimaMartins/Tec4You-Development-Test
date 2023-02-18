@@ -59,6 +59,7 @@ export default function LoginPage() {
     <>
       <Head>
         <title>COVIDANDO | Login</title>
+        <link rel="icon" href="/covidando-logo-blue.png" />
       </Head>
 
       <ToastContainer

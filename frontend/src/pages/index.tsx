@@ -17,7 +17,7 @@ export default function HomePage({ isUserAuthenticated }: HomePageProps) {
     <>
       <Head>
         <title>COVIDANDO | Início</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/covidando-logo-blue.png" />
       </Head>
 
       <HomeHeader isAuthenticated={isUserAuthenticated} />

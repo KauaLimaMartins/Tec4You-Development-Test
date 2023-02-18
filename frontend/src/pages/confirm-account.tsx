@@ -60,6 +60,7 @@ export default function ConfirmAccountPage() {
     <>
       <Head>
         <title>COVIDANDO | Confirmar conta</title>
+        <link rel="icon" href="/covidando-logo-blue.png" />
       </Head>
 
       <ToastContainer

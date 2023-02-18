@@ -1,4 +1,5 @@
 import { Auth } from 'aws-amplify';
+import { MdOutlineCoronavirus } from 'react-icons/md';
 import Hamburger from 'hamburger-react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -58,7 +59,10 @@ export function HomeHeader({ isAuthenticated }: HomeHeaderProps) {
       }
 
       <header className="flex flex-wrap items-center justify-between px-6 py-4 bg-indigo-600">
-        <h2 className="py-2 text-white font-bold drop-shadow-md">COVIDANDO</h2>
+        <div className="flex items-center">
+          <MdOutlineCoronavirus size={32} color="white" />
+          <h2 className="py-2 ml-2 text-white font-bold drop-shadow-md">COVIDANDO</h2>
+        </div>
         
         { isAuthenticated ? (
             <>

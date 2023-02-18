@@ -62,6 +62,7 @@ export default function RegisterPage() {
     <>
       <Head>
         <title>COVIDANDO | Registro</title>
+        <link rel="icon" href="/covidando-logo-blue.png" />
       </Head>
 
       <ToastContainer

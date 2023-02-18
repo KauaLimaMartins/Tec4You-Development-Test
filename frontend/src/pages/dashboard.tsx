@@ -11,6 +11,7 @@ import { formatDateToApi, formatDateToUI } from "../utils/formatDate";
 import { formatTime } from "../utils/formatTime";
 import { api } from "../services/api";
 import { toast, ToastContainer } from "react-toastify";
+import { MdOutlineCoronavirus } from "react-icons/md";
 
 interface DashboardPageProps {
   todaysCovidReports: CovidReport;
@@ -28,7 +29,7 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
   const [maxDate, setMaxDate] = useState<Date>();;
 
   useEffect(() => {
-    api.get<{ regions: Country[] }>("/regions").then(({ data }) => setCountries(data.regions));
+    api.get<{ regions: Country[] }>("/covidando/regions").then(({ data }) => setCountries(data.regions));
   
     let yesterday = new Date();
 
@@ -42,7 +43,7 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
     setIsLoading(true);
 
     try {
-      const { data } = await api.get<{ reports: FilteredCovidReport }>(`/reports/filtered?region-iso=${country}&date=${formatDateToApi(date)}`);
+      const { data } = await api.get<{ reports: FilteredCovidReport }>(`/covidando/reports/filtered?region-iso=${country}&date=${formatDateToApi(date)}`);
     
       setFilteredCovidReports(data.reports);
     } catch (err) {
@@ -58,6 +59,7 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
     <>
       <Head>
         <title>COVIDANDO | Dashboard</title>
+        <link rel="icon" href="/covidando-logo-blue.png" />
       </Head>
 
       <ToastContainer
@@ -74,7 +76,10 @@ export default function DashboardPage({ todaysCovidReports }: DashboardPageProps
       />
 
       <header className="flex items-center justify-center px-6 py-4 bg-indigo-600">
-        <Link href="/" className="py-2 text-white font-bold drop-shadow-md">COVIDANDO</Link>
+        <div className="flex items-center">
+          <MdOutlineCoronavirus size={32} color="white" />
+          <Link href="/" className="py-2 ml-2 text-white font-bold drop-shadow-md">COVIDANDO</Link>
+        </div>
       </header>
       <main className="p-8">
         <div className="mb-8 text-center md:text-left">
@@ -178,7 +183,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 
   try {
-    const { data } = await api.get<{ reports: CovidReport }>(`/reports?date=${formatDateToApi(new Date())}`);
+    const { data } = await api.get<{ reports: CovidReport }>(`/covidando/reports?date=${formatDateToApi(new Date())}`);
   
     const { reports } = data;
 
