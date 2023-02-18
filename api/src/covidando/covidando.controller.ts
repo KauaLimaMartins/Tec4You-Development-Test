@@ -1,34 +1,35 @@
 import {
-  CacheInterceptor,
   Controller,
   Get,
   Query,
   UseInterceptors,
+  CacheInterceptor,
 } from '@nestjs/common';
-import { AppService } from './app.service';
+
+import { CovidandoService } from './covidando.service';
 import { RegionEntity } from './entities/region.entity';
 import { ReportEntity } from './entities/report.entity';
 
 @UseInterceptors(CacheInterceptor)
-@Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+@Controller('covidando')
+export class CovidandoController {
+  constructor(private readonly covidandoService: CovidandoService) {}
 
-  @Get('/regions')
+  @Get('regions')
   getAllRegions(): Promise<{ regions: RegionEntity[] }> {
-    return this.appService.getAllRegions();
+    return this.covidandoService.getAllRegions();
   }
 
-  @Get('/reports')
+  @Get('reports')
   getGlobalReports(): Promise<{ reports: ReportEntity }> {
-    return this.appService.getGlobalReports();
+    return this.covidandoService.getGlobalReports();
   }
 
-  @Get('/reports/filtered')
+  @Get('reports/filtered')
   getFilteredReports(
     @Query('date') date: string,
     @Query('region-iso') iso: string,
   ) {
-    return this.appService.getFilteredReports(date, iso);
+    return this.covidandoService.getFilteredReports(date, iso);
   }
 }

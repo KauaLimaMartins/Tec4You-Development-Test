@@ -1,4 +1,4 @@
-import { ReportEntity } from 'src/entities/report.entity';
+import { ReportEntity } from '../entities/report.entity';
 
 export class TotalReportsResponse {
   data: {

@@ -2,15 +2,16 @@ import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
 import { Cache } from 'cache-manager';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
+
 import { ReportEntity } from './entities/report.entity';
 import { TotalReportsResponse } from './response/total-reports.response';
 import { RegionEntity } from './entities/region.entity';
-import { AllProvincesResponse } from './response/all-provinces.response';
+import { AllRegionsResponse } from './response/all-regions.response';
 import { FilteredReportsResponse } from './response/filtered-reports.response';
 import { FilteredReportEntity } from './entities/filtered-report.entity';
 
 @Injectable()
-export class AppService {
+export class CovidandoService {
   constructor(
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
     private readonly httpService: HttpService,
@@ -22,7 +23,7 @@ export class AppService {
     );
 
     if (!cachedRegions) {
-      const { data: responseData } = await firstValueFrom<AllProvincesResponse>(
+      const { data: responseData } = await firstValueFrom<AllRegionsResponse>(
         this.httpService.get('/regions'),
       );
 
@@ -63,7 +64,7 @@ export class AppService {
   }
 
   async getFilteredReports(date: string, iso: string) {
-    const cachedFiltered = await this.cacheManager.get<RegionEntity[]>(
+    const cachedFiltered = await this.cacheManager.get<RegionEntity>(
       `filtered-${iso}-${date}`,
     );
 
