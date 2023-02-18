@@ -6,7 +6,7 @@
 
 <br />
 
-*Leia em [inglês](https://github.com/KauaLimaMartins/Digital-Republic-Code-Challenge/blob/master/README.md)*
+*Leia em [inglês](https://github.com/KauaLimaMartins/Tec4You-Development-Test/blob/master/README.md)*
 
 <br />
 
@@ -24,17 +24,11 @@ Covidando é uma aplicação para visualizar e filtrar estatísticas da COVID 19
 
 - [Cloud e Deploy](#cloud-e-deploy)
 
-
-<br />
-
 ---
-<br />
 
 # Cloud and Deploy
 
 Todas as partes de Cloud e Deploy foram feitas na AWS 
-
-<br />
 
 ## Serviços da AWS utilizados
 
