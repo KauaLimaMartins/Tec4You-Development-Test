@@ -1,4 +1,4 @@
-*Leia em [inglês](https://github.com/KauaLimaMartins/Digital-Republic-Code-Challenge/blob/master/api/README.md)*
+*Leia em [inglês](https://github.com/KauaLimaMartins/Tec4You-Development-Test/blob/master/api/README.md)*
 
 # Backend
 
