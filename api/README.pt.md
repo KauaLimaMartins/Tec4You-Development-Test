@@ -6,7 +6,7 @@ Esse backend contém uma API REST que pesquisa por casos de covid e salva em cac
 
 <br />
 
-## Summary
+## Sumário
 
 - [Tecnologias usadas no backend](#tecnologias-usadas-no-backend)
 - [Como rodar a API](#como-rodar-a-api)
