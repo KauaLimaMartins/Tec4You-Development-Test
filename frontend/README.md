@@ -1,4 +1,4 @@
-*Read this in [portuguese](https://github.com/KauaLimaMartins/Digital-Republic-Code-Challenge/blob/master/frontend/README.pt.md)*
+*Read this in [portuguese](https://github.com/KauaLimaMartins/Tec4You-Development-Test/blob/master/frontend/README.pt.md)*
 
 <br />
 

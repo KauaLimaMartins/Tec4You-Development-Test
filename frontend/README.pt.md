@@ -1,4 +1,4 @@
-*Leia em [inglês](https://github.com/KauaLimaMartins/Digital-Republic-Code-Challenge/blob/master/frontend/README.md)*
+*Leia em [inglês](https://github.com/KauaLimaMartins/Tec4You-Development-Test/blob/master/frontend/README.md)*
 
 <br />
 
